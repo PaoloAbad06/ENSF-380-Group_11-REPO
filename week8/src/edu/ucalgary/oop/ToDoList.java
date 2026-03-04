@@ -26,6 +26,7 @@ public class ToDoList implements IToDoList {
                 tasks.get(i).setCompleted(true);
             }
         }
+
     }
 
     public void deleteTask(String id) {
@@ -40,8 +41,7 @@ public class ToDoList implements IToDoList {
 
     public void editTask(String id, String title, boolean isCompleted) {
         for (int i =0; i < tasks.size(); i++){
-            if (tasks.get(i).getId().equals(id))
-            {
+            if (tasks.get(i).getId().equals(id)){
                 tasks.get(i).setTitle(title);
                 tasks.get(i).setCompleted(isCompleted);
             }
@@ -49,13 +49,9 @@ public class ToDoList implements IToDoList {
     }
 
     public void undo() {
-        tasks = history.firstElement();
-        history.pop();
-    }
-
     public List<Task> listTasks() {
         return this.tasks;
     }
 }
-
+    
 
