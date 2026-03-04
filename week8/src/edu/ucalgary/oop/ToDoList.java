@@ -41,6 +41,7 @@ public class ToDoList implements IToDoList {
     }
 
     public void editTask(String id, String title, boolean isCompleted) {
+        history.add(List.copyOf(tasks));
         for (int i =0; i < tasks.size(); i++){
             if (tasks.get(i).getId().equals(id)){
                 tasks.get(i).setTitle(title);
@@ -50,7 +51,7 @@ public class ToDoList implements IToDoList {
     }
 
     public void undo() {
-        tasks = history.firstElement();
+        tasks = history.peek();
         history.pop();
     }
     public List<Task> listTasks() {
