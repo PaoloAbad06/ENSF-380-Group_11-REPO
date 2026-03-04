@@ -3,23 +3,43 @@ package edu.ucalgary.oop;
 import java.util.Objects;
 
 public class Task {
+
     private String id;
     private String title;
     private boolean isCompleted;
-    public Task(String id, String title, boolean isCompleted)
-    {
-        this.id = String.valueOf(id);
-        this.isCompleted = isCompleted;
-        this.title = String.valueOf(title);
 
+    public Task(String id, String title) {
+        this.id = id;
+        this.title = title;
+        this.isCompleted = false;
     }
-    public Task(String id, String title)
-    {
-        this.id = String.valueOf(id);
-        this.isCompleted = true;
-        this.title = String.valueOf(title);
 
+    public String getId() {
+        return id;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.isCompleted = completed;
+    }
+
+    public Task copy() {
+        Task copy = new Task(this.id, this.title);
+        copy.setCompleted(this.isCompleted);
+        return copy;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -33,9 +53,5 @@ public class Task {
     @Override
     public int hashCode() {
         return Objects.hash(id, title, isCompleted);
-    }
-    
-    public Task copy(){
-           return  new Task(this.id, this.title, this.isCompleted);     
     }
 }
