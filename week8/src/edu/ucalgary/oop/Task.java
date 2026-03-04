@@ -7,7 +7,7 @@ public class Task {
     private String id;
     private String title;
     private boolean isCompleted;
-
+    
     public Task(String id, String title) {
         this.id = id;
         this.title = title;

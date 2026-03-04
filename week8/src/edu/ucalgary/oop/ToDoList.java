@@ -25,7 +25,12 @@ public class ToDoList implements IToDoList {
     }
 
     public void deleteTask(String id) {
-
+        for (int i =0; i < tasks.size(); i++){
+            if (tasks.get(i).getId().equals(id))
+            {
+                tasks.remove(i);
+            }
+        }
     }
 
     public void editTask() {
@@ -33,10 +38,11 @@ public class ToDoList implements IToDoList {
     }
 
     public void undo() {
-
+        
     }
 
-    public void listTasks() {
+    public List<Task> listTasks() {
+        return this.tasks;
 
     }
 
