@@ -15,13 +15,16 @@ public class ToDoList implements IToDoList {
     }
 
     public void addTask(Task task) {
-        Task[]
-    }
+        tasks.add(task);
     }
 
     public void completeTask(String id) {
-        if task.id == id;
-
+        for (int i = 0; i < tasks.size(); i++) {
+            Task task = tasks.get(i);
+            if (task.getId() == id) {
+                task.setCompleted();
+            }
+        }
     }
 
     public void deleteTask(String id) {
@@ -38,13 +41,12 @@ public class ToDoList implements IToDoList {
     }
 
     public void undo() {
-        
+
     }
 
     public List<Task> listTasks() {
         return this.tasks;
-
     }
-
+}
 
 
