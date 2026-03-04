@@ -3,13 +3,20 @@ package edu.ucalgary.oop;
 import java.util.Objects;
 
 public class Task {
-    private int id;
+    private String id;
     private String title;
     private boolean isCompleted;
-    public Task(int id, String title, boolean isCompleted)
+    public Task(String id, String title, boolean isCompleted)
     {
-        this.id = id;
+        this.id = String.valueOf(id);
         this.isCompleted = isCompleted;
+        this.title = String.valueOf(title);
+
+    }
+    public Task(String id, String title)
+    {
+        this.id = String.valueOf(id);
+        this.isCompleted = true;
         this.title = String.valueOf(title);
 
     }
