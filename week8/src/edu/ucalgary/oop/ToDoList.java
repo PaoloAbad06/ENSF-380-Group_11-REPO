@@ -19,15 +19,18 @@ public class ToDoList implements IToDoList {
     }
 
     public void completeTask(String id) {
+        history.add(List.copyOf(tasks));
         for (int i = 0; i < tasks.size(); i++) {
             Task task = tasks.get(i);
             if (task.getId() == id) {
-                task.setCompleted();
+                task.setCompleted(true);
             }
         }
+
     }
 
     public void deleteTask(String id) {
+        history.add(List.copyOf(tasks));
         for (int i =0; i < tasks.size(); i++){
             if (tasks.get(i).getId().equals(id))
             {
@@ -36,12 +39,13 @@ public class ToDoList implements IToDoList {
         }
     }
 
-    public void editTask() {
+    public void editTask(String id, String description, boolean comleted) {
 
     }
 
     public void undo() {
-
+        tasks = history.firstElement();
+        history.pop();
     }
 
     public List<Task> listTasks() {
