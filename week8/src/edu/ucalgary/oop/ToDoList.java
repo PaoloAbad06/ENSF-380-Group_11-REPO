@@ -15,6 +15,7 @@ public class ToDoList implements IToDoList {
     }
 
     public void addTask(Task task) {
+         history.add(List.copyOf(tasks));
         tasks.add(task);
     }
 
