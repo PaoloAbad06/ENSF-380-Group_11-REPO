@@ -49,9 +49,12 @@ public class ToDoList implements IToDoList {
     }
 
     public void undo() {
+        tasks = history.firstElement();
+        history.pop();
+    }
     public List<Task> listTasks() {
         return this.tasks;
     }
 }
-    
+
 
