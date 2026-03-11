@@ -6,9 +6,9 @@
  Note: If you receive an error with using \ on Windows, try \\ or /
  */
 
-DROP DATABASE IF EXISTS competition;
-CREATE DATABASE competition; 
-\c competition
+-- DROP DATABASE IF EXISTS competition;
+-- CREATE DATABASE competition; 
+-- \c competition
 
 
 DROP TABLE IF EXISTS STUDIO CASCADE;
