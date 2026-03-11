@@ -113,9 +113,16 @@ ex.printStackTrace();
 
     public void close() {
         
-/***********ADD CODE HERE***********/                
-
-    }
+/***********ADD CODE HERE***********/      
+    try {          
+        dbConnect.close();
+        results.close();
+        }
+    catch (SQLException ex)
+        {
+             ex.printStackTrace();
+        }
+}
     
     public static void main(String[] args) {
 
