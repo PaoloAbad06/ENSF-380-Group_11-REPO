@@ -25,6 +25,13 @@ public class Registration{
         //  Database credentials
         this.USERNAME = user;
         this.PASSWORD = pw;
+        try{
+                dbConnect = DriverManager.getConnection("jdbc:postgresql://localhost/competition", "oop", "ucalgary");
+
+        }
+         catch (SQLException ex) {
+    ex.printStackTrace();
+    }   
     }
 
 
@@ -98,8 +105,15 @@ public class Registration{
             throw new IllegalArgumentException("Student must be between the ages of 5 and 18.");
         } 
 
-        String query = "INSERT INTO table_name (CompetitorID, LName, FName, Age, Instrument, TeacherID) VALUES ("+ id +","+ lName +","+ fName +","+ age  +","+  instrument  +","+ teacherID +")";             
+        String query = "INSERT INTO COMPETITOR (CompetitorID, LName, FName, Age, Instrument, TeacherID) VALUES   (?, ?, ?, ?, ?, ?)"; 
         PreparedStatement myStmt = dbConnect.prepareStatement(query);
+            
+            myStmt.setString(1, id);
+            myStmt.setString(2, lName);
+            myStmt.setString(3, fName);
+            myStmt.setInt(4, age);    
+            myStmt.setString(5, instrument);
+            myStmt.setString(6, teacherID);
         myStmt.execute();
     }
     catch (SQLException ex) {
