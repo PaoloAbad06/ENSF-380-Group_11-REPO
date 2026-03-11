@@ -51,6 +51,37 @@ public class Registration{
     
     public String selectAllNames(String tableName){     
 
+		        String list = ""; 
+        try {
+            
+            Statement myStmt = dbConnect.createStatement();
+            
+            
+            results = myStmt.executeQuery("SELECT * FROM " + tableName);
+            
+            
+            while (results.next()) {
+
+                
+    
+                String lastName = results.getString("LName");
+                String firstName = results.getString("FName");
+
+                
+                String formattedLine = lastName + ", " + firstName + "\n";
+
+                
+                list = list + formattedLine;
+            }
+            
+            myStmt.close(); 
+        } 
+        
+        catch (SQLException ex) {
+            ex.printStackTrace(); 
+        }
+        
+        return list;
 /***********ADD CODE HERE***********/                
 /* Use selectAllNames method to return a list of competitiors and a list of teachers (two separate calls) Must take in a String for the table name and return a String */
     
