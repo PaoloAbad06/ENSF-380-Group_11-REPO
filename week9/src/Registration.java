@@ -30,9 +30,13 @@ public class Registration{
 
 //Must create a connection to the database, no arguments, no return value    
     public void initializeConnection(){
-
-/***********ADD CODE HERE***********/                
-/* Throw SQL exception if connection does not work */
+	try {
+    	// Create a connection to the database
+    	dbConnect = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
+    	System.out.println("Connection established successfully.");
+	} catch (SQLException e) {
+    	e.printStackTrace();
+	}
 
     }
     
