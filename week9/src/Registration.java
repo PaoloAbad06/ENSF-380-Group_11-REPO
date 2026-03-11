@@ -58,37 +58,47 @@ public class Registration{
     
     public String selectAllNames(String tableName){     
 
-		        String list = ""; 
-        try {
-            
-            Statement myStmt = dbConnect.createStatement();
-            
-            
-            results = myStmt.executeQuery("SELECT * FROM " + tableName);
-            
-            
-            while (results.next()) {
+public String selectAllNames(String tableName) {     
 
-                
+    // 1. Create an empty String to store the list of names we will return [cite: 25]
+    String list = ""; 
     
-                String lastName = results.getString("LName");
-                String firstName = results.getString("FName");
-
-                
-                String formattedLine = lastName + ", " + firstName + "\n";
-
-                
-                list = list + formattedLine;
-            }
-            
-            myStmt.close(); 
-        } 
+    try {
+        // 2. Create a 'Statement' object to send our SQL command to the database 
+        Statement myStmt = dbConnect.createStatement();
         
-        catch (SQLException ex) {
-            ex.printStackTrace(); 
+        // 3. Send the 'SELECT' command to get every row from the table (competitor or teacher) [cite: 54]
+        // The results are stored in the 'results' variable 
+        results = myStmt.executeQuery("SELECT * FROM " + tableName);
+        
+        // 4. Use a while loop to move through the table, row by row 
+        // results.next() returns true as long as there is another row to read
+        while (results.next()) {
+
+            // 5. Get the text stored in the "LName" column for the current row [cite: 17]
+            String lastName = results.getString("LName");
+            
+            // 6. Get the text stored in the "FName" column for the current row [cite: 17]
+            String firstName = results.getString("FName");
+
+            // 7. Combine the names with a comma and a new line to match output.txt [cite: 10, 54]
+            String formattedLine = lastName + ", " + firstName + "\n";
+
+            // 8. Add this new line of text to our main list string [cite: 26]
+            list = list + formattedLine;
         }
         
-        return list;
+        // 9. Close the statement to free up database resources 
+        myStmt.close(); 
+    } 
+    // 10. If the database connection fails or the SQL is wrong, catch the error here [cite: 25]
+    catch (SQLException ex) {
+        // 11. Print the error details to the console so we can debug it
+        ex.printStackTrace(); 
+    }
+
+    // 12. Return the final string containing all the names [cite: 25]
+    return list;
 /***********ADD CODE HERE***********/                
 /* Use selectAllNames method to return a list of competitiors and a list of teachers (two separate calls) Must take in a String for the table name and return a String */
     
