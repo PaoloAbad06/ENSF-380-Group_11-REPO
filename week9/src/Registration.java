@@ -109,12 +109,13 @@ ex.printStackTrace();
             String query = "DELETE FROM competitor WHERE CompetitorID=?";
             PreparedStatement pStmt = dbConnect.prepareStatement(query);
             pStmt.setString(1, id);
+            pStmt.execute();
 
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-    }    
+    }     
 
     public void close() {
         
