@@ -53,24 +53,27 @@ public class Registration{
 
 /***********ADD CODE HERE***********/                
 /* Use selectAllNames method to return a list of competitiors and a list of teachers (two separate calls) Must take in a String for the table name and return a String */
-
+    
     }
     
     
-    public void insertNewCompetitor(String id, String lName, String fName, int age, String instrument, String teacherID){
-       
+    public void insertNewCompetitor(String id, String lName, String fName, int age, String instrument, String teacherID) {
+       try{
         if(!validateTeacher(teacherID)){
             throw new IllegalArgumentException("Student must have a registered teacher.");
         }
 
         if(age < 5 || age > 18){
             throw new IllegalArgumentException("Student must be between the ages of 5 and 18.");
-        }
-             
+        } 
 
-/***********ADD CODE HERE***********/                
-
-
+        String query = "INSERT INTO table_name (CompetitorID, LName, FName, Age, Instrument, TeacherID) VALUES ("+ id +","+ lName +","+ fName +","+ age  +","+  instrument  +","+ teacherID +")";             
+        PreparedStatement myStmt = dbConnect.prepareStatement(query);
+        myStmt.execute();
+    }
+    catch (SQLException ex) {
+ex.printStackTrace();
+}
     }    
 
     
