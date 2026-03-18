@@ -17,8 +17,10 @@ public class SmartThermostat extends SmartDevice<Integer> {
         
         if (message.equalsIgnoreCase("Sleep")) {
             adjustTemperature(18); 
+            
         } else if (message.equalsIgnoreCase("Vacation")) {
             adjustTemperature(20); 
+            
         }
     }
 
@@ -28,6 +30,7 @@ public class SmartThermostat extends SmartDevice<Integer> {
     }
 
     public void adjustTemperature(int desiredTemp) {
+        
         int currentTemp = getState();
         int difference = desiredTemp - currentTemp;
 
