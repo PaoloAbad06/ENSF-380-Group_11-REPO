@@ -1,0 +1,36 @@
+SmartLight is OFF. Room is dark.
+Thermostat is set to 20°C. Adjusting temperature.
+SmartLock is LOCKED. Securing the door.
+
+=== Initial States ===
+Light: OFF
+Thermostat: 20°C
+Lock: LOCKED
+=== Setting Explicit States ===
+SmartLight is ON. Brightening the room.
+Thermostat is set to 22°C. Adjusting temperature.
+SmartLock is UNLOCKED. Door is open.
+=== States After Explicit Changes ===
+Light: ON
+Thermostat: 22°C
+Lock: UNLOCKED
+
+=== Sending 'Sleep' Message ===
+SmartHome: Sending message - Sleep
+SmartLight is OFF. Room is dark.
+Thermostat is set to 18°C. Adjusting temperature.
+SmartLock is LOCKED. Securing the door.
+=== States After 'Sleep' Message ===
+Light: OFF
+Thermostat: 18°C
+Lock: LOCKED
+
+=== Sending 'Vacation' Message ===
+SmartHome: Sending message - Vacation
+SmartLight is ON. Brightening the room.
+Thermostat is set to 20°C. Adjusting temperature.
+SmartLock is LOCKED. Securing the door.
+=== States After 'Vacation' Message ===
+Light: ON
+Thermostat: 20°C
+Lock: LOCKED
